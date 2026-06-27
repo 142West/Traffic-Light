@@ -1,0 +1,12 @@
+[Unit]
+Description=Traffic Light - MQTT Relay Controller
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/home/pi/venv/bin/python /home/pi/Traffic-Light/traffic-light.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
