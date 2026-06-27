@@ -57,28 +57,7 @@ chmod 600 .env
 
 ---
 
-## 4. Configure Home Assistant
-
-Remove the old `remote_rpi_gpio` switch config from `configuration.yaml`:
-
-```yaml
-# DELETE this block
-switch:
-  - platform: remote_rpi_gpio
-    host: 10.1.13.57
-    invert_logic: true
-    ports:
-      17: GREEN
-      27: YELLOW
-      22: RED
-    scan_interval: 1
-```
-
-No replacement YAML is needed. The Pi publishes MQTT Discovery messages on connect, and HA automatically creates a **Traffic Light** device with three switch entities (Green, Yellow, Red). They appear under **Settings > Devices & Services > MQTT**.
-
----
-
-## 5. Install as a System Service
+## 4. Install as a System Service
 
 ```bash
 sudo cp traffic-light.service /etc/systemd/system/
